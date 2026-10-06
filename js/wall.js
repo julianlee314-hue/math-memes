@@ -81,10 +81,12 @@
     a.className = "meme-tile" + (m.nsfw ? " nsfw" : "");
     a.href = "#" + m.id;
     a.dataset.id = m.id;
+    const isPersonal = m.source === "personal" || (m.tags || []).includes("personal") || m.score == null;
+    const scoreHtml = isPersonal
+      ? '<span class="score personal-badge" title="Personal upload">personal</span>'
+      : '<span class="score" title="Reddit score">▲ ' + fmtScore(m.score || 0) + "</span>";
     a.innerHTML =
-      '<span class="score" title="Reddit score">▲ ' +
-      fmtScore(m.score || 0) +
-      "</span>" +
+      scoreHtml +
       '<button type="button" class="fav" aria-label="Favourite" aria-pressed="' +
       (favs.has(m.id) ? "true" : "false") +
       '">' +
@@ -101,8 +103,10 @@
       '" /></figure>' +
       '<div class="tile-body"><h2>' +
       escapeHtml(m.title) +
-      '</h2><p class="meta"><span>u/' +
-      escapeHtml((m.credit && m.credit.author) || "unknown") +
+      '</h2><p class="meta"><span>' +
+      (isPersonal
+        ? escapeHtml((m.credit && m.credit.author) || "Julius (personal)")
+        : "u/" + escapeHtml((m.credit && m.credit.author) || "unknown")) +
       "</span>" +
       (m.nsfw ? "<span>NSFW</span>" : "") +
       "</p></div>" +
@@ -165,13 +169,21 @@
     lbImg.src = m.image;
     lbImg.alt = m.alt || m.title;
     lbTitle.textContent = m.title;
-    lbCredit.innerHTML =
-      "▲ " +
-      fmtScore(m.score || 0) +
-      " · u/" +
-      escapeHtml((m.credit && m.credit.author) || "unknown") +
-      (m.nsfw ? " · <strong>NSFW</strong>" : "");
-    lbReddit.href = permalink(m);
+    const isPersonal = m.source === "personal" || (m.tags || []).includes("personal") || m.score == null;
+    lbCredit.innerHTML = isPersonal
+      ? "Personal upload · " + escapeHtml((m.credit && m.credit.author) || "Julius") +
+        (m.nsfw ? " · <strong>NSFW</strong>" : "")
+      : "▲ " +
+        fmtScore(m.score || 0) +
+        " · u/" +
+        escapeHtml((m.credit && m.credit.author) || "unknown") +
+        (m.nsfw ? " · <strong>NSFW</strong>" : "");
+    if (isPersonal) {
+      lbReddit.style.display = "none";
+    } else {
+      lbReddit.style.display = "";
+      lbReddit.href = permalink(m);
+    }
     lbFav.textContent = favs.has(m.id) ? "Unfavourite" : "Favourite";
     history.replaceState(null, "", "#" + m.id);
     if (!dialog.open) dialog.showModal();
@@ -213,7 +225,12 @@
     .then((r) => r.json())
     .then((data) => {
       memes = (Array.isArray(data) ? data : data.memes || []).slice();
-      memes.sort((a, b) => (b.score || 0) - (a.score || 0));
+      memes.sort((a, b) => {
+        const sa = a.score == null ? -1 : a.score;
+        const sb = b.score == null ? -1 : b.score;
+        if (sb !== sa) return sb - sa;
+        return String(a.id).localeCompare(String(b.id));
+      });
       const tagCount = {};
       memes.forEach((m) =>
         (m.tags || []).forEach((t) => {

@@ -227,3 +227,10 @@ dialog.lightbox::backdrop { background: rgba(28, 25, 23, 0.72); }
   outline: 2px solid color-mix(in srgb, var(--nsfw) 70%, transparent);
   outline-offset: -2px;
 }
+
+.meme-tile .score.personal-badge {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--paper) 90%, var(--lantern-gold));
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
