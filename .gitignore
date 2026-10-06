@@ -1,0 +1,12 @@
+data/shards/
+data/raw/
+data/scrape_meta.log
+data/build.log
+data/build_topup.log
+data/all_posts.jsonl
+data/selected_top.json
+data/topup_candidates.json
+data/skipped.jsonl
+__pycache__/
+*.pyc
+repo/

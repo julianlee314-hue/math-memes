@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Memes Wall · Mathera</title>
+  <meta name="description" content="All-time top r/mathmemes archive — a Mathera / Wayfinder bonus constellation wall. Sorted by upvotes." />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="brand" href="index.html">Mathera <span>Memes Wall</span></a>
+    <ul class="nav">
+      <li><a href="index.html" aria-current="page">Wall</a></li>
+      <li><a href="about/">About</a></li>
+    </ul>
+  </div>
+</header>
+<main class="wrap">
+  <section class="wall-hero">
+    <h1>Memes Wall</h1>
+    <p>All-time top image posts from <strong>r/mathmemes</strong>, archived locally and sorted by upvotes. A fun bonus shelf next to <strong>Mathera</strong> / <strong>Wayfinder</strong> — constellation mapping onto skills comes later.</p>
+    <div class="wall-legend">
+      <span><strong id="stat-shown">…</strong> shown</span>
+      <span><strong id="stat-total">…</strong> archived</span>
+      <span>Sorted by score ↓</span>
+    </div>
+  </section>
+
+  <div class="toolbar" role="search">
+    <input type="search" id="q" placeholder="Search titles, authors…" autocomplete="off" />
+    <label class="toggle"><input type="checkbox" id="show-nsfw" checked /> Show NSFW (marked)</label>
+    <label class="toggle"><input type="checkbox" id="favs-only" /> Favourites only</label>
+    <div class="chip-row" id="chips" aria-label="Quick filters"></div>
+  </div>
+
+  <div id="gallery" class="meme-gallery" aria-label="Math memes sorted by score"></div>
+  <p id="empty" class="empty hidden">No memes match these filters.</p>
+</main>
+
+<dialog class="lightbox" id="lightbox" aria-label="Meme viewer">
+  <div class="lb-inner" style="position:relative">
+    <button type="button" class="lb-close" id="lb-close" aria-label="Close">×</button>
+    <button type="button" class="lb-nav prev" id="lb-prev" aria-label="Previous">‹</button>
+    <button type="button" class="lb-nav next" id="lb-next" aria-label="Next">›</button>
+    <div class="lb-img-wrap"><img id="lb-img" alt="" /></div>
+    <div class="lb-meta">
+      <h2 id="lb-title"></h2>
+      <p id="lb-credit"></p>
+      <div class="lb-actions">
+        <a class="btn" id="lb-reddit" href="#" target="_blank" rel="noopener">Open on Reddit</a>
+        <button type="button" id="lb-fav">Favourite</button>
+        <button type="button" id="lb-close2">Close</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<footer class="site-footer">
+  <p>Unofficial educational archive for Mathera research. Credits remain with original Reddit authors.
+     Takdowns: open an issue on the repo. Not affiliated with Reddit.</p>
+</footer>
+<script src="js/wall.js" defer></script>
+</body>
+</html>
