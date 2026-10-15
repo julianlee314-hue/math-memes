@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 ROOT = Path("/workspace/math-memes-archive")
 OUT_DIR = ROOT / "data" / "shards"
 OUT = ROOT / "data" / "all_posts.jsonl"
-UA = "MatheraArchiveBot/1.0 (educational archive; github.com/julianlee314-hue)"
+UA = "MatheraArchiveBot/1.0 (educational archive; github.com/the-court-press)"
 BASE = "https://arctic-shift.photon-reddit.com/api/posts/search"
 FIELDS = "id,title,score,url,author,created_utc,over_18,post_hint,num_comments,link_flair_text"
 LIMIT = 100

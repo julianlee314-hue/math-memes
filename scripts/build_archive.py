@@ -15,7 +15,7 @@ SKIP_LOG = ROOT / "data" / "skipped.jsonl"
 META_OUT = ROOT / "data" / "selected_top.json"
 STATS = ROOT / "data" / "build_stats.json"
 
-UA = "MatheraArchiveBot/1.0 (educational archive; github.com/julianlee314-hue)"
+UA = "MatheraArchiveBot/1.0 (educational archive; github.com/the-court-press)"
 TOP_N = 1000
 MAX_WIDTH = 1600
 THUMB_W = 480

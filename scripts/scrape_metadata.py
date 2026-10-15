@@ -4,7 +4,7 @@ import json, time, urllib.parse, urllib.request, sys
 from pathlib import Path
 
 OUT = Path("/workspace/math-memes-archive/data/all_posts.jsonl")
-UA = "MatheraArchiveBot/1.0 (educational archive; github.com/julianlee314-hue)"
+UA = "MatheraArchiveBot/1.0 (educational archive; github.com/the-court-press)"
 BASE = "https://arctic-shift.photon-reddit.com/api/posts/search"
 FIELDS = "id,title,score,url,author,created_utc,over_18,post_hint,num_comments,link_flair_text"
 LIMIT = 100

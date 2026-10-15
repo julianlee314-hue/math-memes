@@ -6,7 +6,7 @@ Unofficial personal archive of **all-time top r/mathmemes** image posts, sorted 
 
 ## Live
 
-GitHub Pages from `main` `/` → https://julianlee314-hue.github.io/math-memes/
+GitHub Pages from `main` `/` → https://the-court-press.github.io/math-memes/
 
 ## What's here
 
